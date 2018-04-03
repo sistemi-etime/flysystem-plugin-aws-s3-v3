@@ -10,5 +10,3 @@ php:
 install:
   - travis_retry composer install --no-interaction --prefer-source
 
-script:
-  - bin/phpspec run

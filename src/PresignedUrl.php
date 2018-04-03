@@ -3,7 +3,7 @@
  * This file is part of flysystem-plugin-aws-s3-v3 ( Etime\Flysystem\Plugin\AWS_S3 ).
  *
  * @author      Mauro Braggio (E-Time) <m.braggio@e-time.it>
- * @copyright   2018  Mauro Braggio (E-Time) <m.braggio@e-time.it>
+ * @copyright   2018 Mauro Braggio (E-Time) <m.braggio@e-time.it>
  * @license     MIT
  */
 namespace Etime\Flysystem\Plugin\AWS_S3;
@@ -14,7 +14,7 @@ use League\Flysystem\PluginInterface;
 /**
  * AWS S3 PresignedUrl plugin.
  *
- * Implements a symlink($symlink, $target) method for Filesystem instances using LocalAdapter.
+ * Implements a getPresignedUrl($path, $expiration) method for Filesystem instances using AwsS3Adapter.
  * https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-presigned-url.html
  */
 class PresignedUrl implements PluginInterface
@@ -51,11 +51,11 @@ class PresignedUrl implements PluginInterface
      *
      * Get a Presigned Url for a file.
      *
-     * @see http://php.net/manual/en/function.symlink.php Documentation of symlink().
+     * @see https://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-presigned-url.html.
      *
      * @param   string  $path        File.
      * @param   string  $expiration  Expiration time of url.
-     * @return  boolean              True on success. False on failure.
+     * @return  boolean              Presigned Url on success. False on failure.
      */
     public function handle($path, $expiration = "+20 minutes")
     {
@@ -67,13 +67,13 @@ class PresignedUrl implements PluginInterface
         ];
       
         /*
-        if (isset($adapter->options['@http'])) {
-            $options['@http'] = $adapter->options['@http'];
+        if (isset($adapter->getOptions()['@http'])) {
+            $options['@http'] = $adapter->getOptions()['@http'];
         }
         */
         
         $S3Client = $adapter->getClient();
-        $command = $S3Client->getCommand('getObject', $options /*+ $adapter->options */ );
+        $command = $S3Client->getCommand('getObject', $options /*+ $adapter->getOptions() */ );
         try {
             $request = $S3Client->createPresignedRequest($command, $expiration);
             return (string) $request->getUri();

@@ -1,5 +1,5 @@
 {
-    "name": "sistemi-etime/flysystem-local-symlink-plugin",
+    "name": "sistemi-etime/flysystem-plugin-aws-s3-v3",
     "description": "AWS S3 plugin for Flysystem.",
     "keywords": ["aws", "s3", "getUrl", "flysystem", "plugin"],
     "type": "library",

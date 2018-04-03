@@ -1,6 +1,6 @@
 # Flysystem AWS S3 Plugin
 
-[![Author](http://img.shields.io/badge/author-mauro.braggio.svg?style=flat-square)](https://www.e-time.it)
+[![Author](http://img.shields.io/badge/author-mauro.braggio-brightgreen.svg?style=flat-square)](https://www.e-time.it)
 [![Author](https://img.shields.io/badge/author-www.e--time.it-blue.svg?style=flat-square)](https://www.e-time.it)
 
 [![Build Status](https://img.shields.io/travis/sistemi-etime/flysystem-plugin-aws-s3-v3/master.svg?style=flat-square)](https://travis-ci.org/sistemi-etime/flysystem-plugin-aws-s3-v3)

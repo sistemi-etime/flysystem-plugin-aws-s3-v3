@@ -1,0 +1,23 @@
+{
+    "name": "sistemi-etime/flysystem-local-symlink-plugin",
+    "description": "AWS S3 plugin for Flysystem.",
+    "keywords": ["aws", "s3", "getUrl", "flysystem", "plugin"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mauro Braggio",
+            "email": "m.braggio@e-time.it",
+            "homepage": "https://www.e-time.it/"
+        }
+    ],
+    "require": {
+        "league/flysystem": "~1.0",
+        "league/flysystem-aws-s3-v3": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Etime\\Flysystem\\Plugin\\AWS_S3\\": "src/"
+        }
+    }
+}

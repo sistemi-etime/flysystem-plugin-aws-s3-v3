@@ -55,9 +55,10 @@ class PresignedUrl implements PluginInterface
      *
      * @param   string  $path        File.
      * @param   string  $expiration  Expiration time of url.
+     * @param   array  $getObjectOptions  Additional options for getObject command
      * @return  boolean              Presigned Url on success. False on failure.
      */
-    public function handle($path, $expiration = "+20 minutes")
+    public function handle($path, $expiration = "+20 minutes", $getObjectOptions = [])
     {
         $adapter = $this->filesystem->getAdapter();        
         
@@ -65,7 +66,9 @@ class PresignedUrl implements PluginInterface
             'Bucket' => $adapter->getBucket(),
             'Key' => $adapter->applyPathPrefix($path),
         ];
-      
+
+        $options = array_merge($options, $getObjectOptions);
+
         /*
         if (isset($adapter->getOptions()['@http'])) {
             $options['@http'] = $adapter->getOptions()['@http'];
